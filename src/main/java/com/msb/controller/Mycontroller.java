@@ -19,6 +19,7 @@ public class Mycontroller {
         User user = s.select(id);
         System.out.println(user==null ?"未找到":user);
         System.out.println("测试");
+        System.out.println("分支提交 ignore插件使用");// 19:54
     }
     public static void main(String[] args) {
         ApplicationContext ac= new ClassPathXmlApplicationContext("applicationContext.xml");
