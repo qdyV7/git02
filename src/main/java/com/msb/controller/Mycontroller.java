@@ -21,6 +21,7 @@ public class Mycontroller {
         System.out.println("测试");
         System.out.println("dev分支添加的语句");// 19:26
         System.out.println("主干添加的语句");// 19:29
+        System.out.println("ignore");// 19:50
     }
     public static void main(String[] args) {
         ApplicationContext ac= new ClassPathXmlApplicationContext("applicationContext.xml");
