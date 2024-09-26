@@ -13,11 +13,12 @@ import org.springframework.stereotype.Component;
 public class Mycontroller {
     @Autowired
     Service s;
-//    int a=10;
+//    int a=10;sds
 
     public void test(int id){
         User user = s.select(id);
         System.out.println(user==null ?"未找到":user);
+        System.out.println("测试");
     }
     public static void main(String[] args) {
         ApplicationContext ac= new ClassPathXmlApplicationContext("applicationContext.xml");
