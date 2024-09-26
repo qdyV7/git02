@@ -1,0 +1,41 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--1.配置连接数据库的数据源-->
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!--这个name属性都可以在DriverManagerDataSource中找到对应的setter方法-->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/sm?useUnicode=true&amp;characterEncoding=utf-8&amp;
+                  useSSL=false&amp;serverTimezone=GMT%2B8&amp;allowPublicKeyRetrieval=true"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+    <!--2.配置SqlSessionFactory-->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--工厂依赖数据源，需要注入数据源对应的对象-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--配置别名，为包下的实体类创建别名-->
+        <property name="typeAliasesPackage" value="com.msb.pojo"></property>
+    </bean>
+
+
+    <!--3.扫描对应的Mapper文件-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--需要注入工厂，因为以前都是：sqlSession.getMapper()-->
+        <property name="sqlSessionFactoryBeanName" value="factory"></property>
+        <!--扫描的文件-->
+        <property name="basePackage" value="com.msb.mapper"></property>
+    </bean>
+
+
+    <!--扫描注解所在的包-->
+    <context:component-scan base-package="com.msb.service_impl,com.msb.controller"></context:component-scan>
+
+</beans>
