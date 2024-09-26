@@ -17,6 +17,7 @@ public class Mycontroller {
 
     public void test(int id){
         User user = s.select(id);
+
         System.out.println(user==null ?"未找到":user);
         System.out.println("测试");
         System.out.println("dev分支添加的语句");// 19:26
