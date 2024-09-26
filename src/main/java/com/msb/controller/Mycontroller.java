@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class Mycontroller {
     @Autowired
     Service s;
+//    int a=10;
 
     public void test(int id){
         User user = s.select(id);
@@ -21,7 +22,6 @@ public class Mycontroller {
     public static void main(String[] args) {
         ApplicationContext ac= new ClassPathXmlApplicationContext("applicationContext.xml");
         Mycontroller bean = (Mycontroller) ac.getBean("mycontroller");
-        bean.test(0);
-
+        bean.test(1);
     }
 }
