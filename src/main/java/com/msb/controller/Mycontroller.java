@@ -19,6 +19,8 @@ public class Mycontroller {
         User user = s.select(id);
         System.out.println(user==null ?"未找到":user);
         System.out.println("测试");
+        System.out.println("dev分支添加的语句");// 19:26
+        System.out.println("主干添加的语句");// 19:29
     }
     public static void main(String[] args) {
         ApplicationContext ac= new ClassPathXmlApplicationContext("applicationContext.xml");
